@@ -1,0 +1,40 @@
+[project]
+name = "backend"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi[standard]>=0.121.0",
+    "pydantic>=2.12.4",
+    "pyright>=1.1.407",
+    "pytest>=8.4.2",
+    "ruff>=0.14.3",
+    "sqlalchemy>=2.0.44",
+]
+
+[tool.ruff]
+line-length = 100
+indent-width = 4
+target-version = "py312"
+
+[tool.ruff.lint]
+# 1. Enable flake8-bugbear (`B`) rules, in addition to the defaults.
+select = ["E4", "E7", "E9", "F", "B"]
+# 2. Avoid enforcing line-length violations (`E501`)
+ignore = ["E501", "B008"]
+extend-select = ["I"]
+# 3. Avoid trying to fix flake8-bugbear (`B`) violations.
+unfixable = ["B"]
+
+[tool.ruff.format]
+# 5. Use single quotes in `ruff format`.
+quote-style = "single"
+indent-style = "space"
+exclude = ["*.pyi"]
+line-ending = "auto"
+
+[tool.pyright]
+venvPath = ".venv"
+venv = "venv"
+typeCheckingMode = "standard"

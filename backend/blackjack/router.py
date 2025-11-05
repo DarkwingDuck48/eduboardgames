@@ -29,24 +29,18 @@ CARD_VALUES = {
 CARD_SUITS = ['hearts', 'spades', 'diamonds', 'clubs']
 
 
-playerCardsCache = []
-dealerCardsCache = []
-
-
 @router.post('/start')
 def start() -> JSONResponse:
-    playerCardsCache = [
-        {'value': 'A', 'suit': 'hearts', 'points': 11},
-        {'value': '10', 'suit': 'hearts', 'points': 10},
-    ]
-    dealerCardsCache = [
-        {'value': 'K', 'suit': 'diamonds', 'points': 10},
-        {'value': '?', 'suit': '?', 'points': 0},
-    ]
     moskCards = {
-        'playerCards': playerCardsCache,
+        'playerCards': [
+            {'value': 'A', 'suit': 'hearts', 'points': 11},
+            {'value': '10', 'suit': 'hearts', 'points': 10},
+        ],
         'playerScore': 21,
-        'dealerCards': dealerCardsCache,
+        'dealerCards': [
+            {'value': 'K', 'suit': 'diamonds', 'points': 10},
+            {'value': '?', 'suit': '?', 'points': 0},
+        ],
         'dealerScore': 10,
     }
     return JSONResponse(status_code=200, content=moskCards)
@@ -56,7 +50,11 @@ def start() -> JSONResponse:
 def hit(data: Dict[str, Any] = Body()) -> JSONResponse:
     print(data)
     moskCards = {
-        'playerCards': playerCardsCache,
+        'playerCards': [
+            {'value': 'A', 'suit': 'hearts', 'points': 11},
+            {'value': '10', 'suit': 'hearts', 'points': 10},
+            {'value': '5', 'suit': 'hearts', 'points': 5},
+        ],
         'playerScore': 26,
         'gameOver': True,
         'message': 'Перебор! Вы проиграли.',

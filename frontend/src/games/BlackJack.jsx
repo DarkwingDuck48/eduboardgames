@@ -20,7 +20,7 @@ const BlackjackGame = () => {
     loading: false,
   });
 
-  const API_BASE_URL = "http://localhost:8000/api";
+  const API_BASE_URL = "/api";
 
   const startGame = async () => {
     setGameState((prev) => ({ ...prev, loading: true }));

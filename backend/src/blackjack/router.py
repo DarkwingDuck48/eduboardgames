@@ -8,6 +8,7 @@ router = APIRouter(prefix='/blackjack')
 POST /api/blackjack/start - начало игры
 POST /api/blackjack/hit   - получение новой карты
 POST /api/blackjack/stand - подсчет результатов
+
 """
 
 CARD_VALUES = {

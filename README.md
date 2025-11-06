@@ -7,10 +7,10 @@
 ### Python
 
 Для запуска бэкенда необходима установка пакетного менеджера [uv](https://docs.astral.sh/uv/getting-started/installation/)
-После установки необходимо запустить сервер командой, находясь в папке `backend``
+После установки необходимо запустить сервер разработки командой, находясь в папке `backend``
 
 ```bash
-uv run fastapi main.py
+uv run fastapi dev
 ```
 
 ### Frontend

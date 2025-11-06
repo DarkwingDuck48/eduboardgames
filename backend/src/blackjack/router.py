@@ -3,7 +3,10 @@ from typing import Any, Dict
 from fastapi import APIRouter, Body
 from fastapi.responses import JSONResponse
 
+from src.blackjack.logic import start_hand
+
 router = APIRouter(prefix='/blackjack')
+
 """
 POST /api/blackjack/start - начало игры
 POST /api/blackjack/hit   - получение новой карты
@@ -11,38 +14,10 @@ POST /api/blackjack/stand - подсчет результатов
 
 """
 
-CARD_VALUES = {
-    'A': 11,
-    'K': 10,
-    'Q': 10,
-    'J': 10,
-    '10': 10,
-    '9': 9,
-    '8': 8,
-    '7': 7,
-    '6': 6,
-    '5': 5,
-    '4': 4,
-    '3': 3,
-    '2': 2,
-}
-CARD_SUITS = ['hearts', 'spades', 'diamonds', 'clubs']
-
 
 @router.post('/start')
 def start() -> JSONResponse:
-    moskCards = {
-        'playerCards': [
-            {'value': 'A', 'suit': 'hearts', 'points': 11},
-            {'value': '10', 'suit': 'hearts', 'points': 10},
-        ],
-        'playerScore': 21,
-        'dealerCards': [
-            {'value': 'K', 'suit': 'diamonds', 'points': 10},
-            {'value': '?', 'suit': '?', 'points': 0},
-        ],
-        'dealerScore': 10,
-    }
+    moskCards = start_hand()
     return JSONResponse(status_code=200, content=moskCards)
 
 
